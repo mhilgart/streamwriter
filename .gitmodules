@@ -1,0 +1,28 @@
+[submodule "modules/bitshuffle"]
+	path = modules/bitshuffle
+	url = https://github.com/kiyo-masui/bitshuffle.git
+	ignore = dirty
+[submodule "modules/cbflib"]
+	path = modules/cbflib
+	url = https://github.com/yayahjb/cbflib.git
+	ignore = dirty
+[submodule "modules/onion"]
+	path = modules/onion
+	url = https://github.com/davidmoreno/onion
+	ignore = dirty
+[submodule "modules/jsoncpp"]
+	path = modules/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp.git
+	ignore = dirty
+[submodule "modules/cppzmq"]
+	path = modules/cppzmq
+	url = https://github.com/zeromq/cppzmq.git
+	ignore = dirty
+[submodule "modules/boost"]
+	path = modules/boost
+	url = https://github.com/boostorg/boost.git
+	ignore = dirty
+[submodule "modules/libzmq"]
+	path = modules/libzmq
+	url = https://github.com/zeromq/zeromq4-1.git
+	ignore = dirty
