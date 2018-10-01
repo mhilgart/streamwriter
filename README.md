@@ -4,6 +4,9 @@ This program writes CBF images from a Dectris Eiger detector.  It can be
 installed in minutes via an RPM, or built from source with the dependencies
 listed below.
 
+StreamWriter has been used at the 23-ID-B beamline at the Advanced Photon
+Source (APS) since July 2017 for all Eiger image writing.
+
 # RPM install
 
 The RPM is tested with CentOS 7.5.  To install:
