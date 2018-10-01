@@ -1,0 +1,16 @@
+[Unit]
+Description=StreamWriter
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/streamwriter-start
+ExecStop=/usr/bin/streamwriter-stop
+TimeoutSec=30
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

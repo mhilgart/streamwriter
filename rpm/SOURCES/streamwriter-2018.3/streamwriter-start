@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export datestamp=$(date +"%Y-%m-%d-%H-%M-%S")
+export logname="/var/log/streamwriter/streamwriter-${datestamp}.log"
+mkdir -p /var/log/streamwriter
+/usr/bin/streamwriter > $logname
+

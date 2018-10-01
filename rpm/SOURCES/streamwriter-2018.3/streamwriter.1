@@ -1,0 +1,12 @@
+.TH STREAMWRITER 1
+.SH NAME
+streamwriter \- Write CBF files from the Eiger ZeroMQ stream
+.SH SYNOPSIS
+.B streamwriter
+.SH DESCRIPTION
+.B streamwriter
+connects via ZeroMQ to a Dectris Eiger detector and reads images using the
+PUSH-PULL ZeroMQ protocol.  As each image is read, it is written to disk
+in Crystallographic Binary Format (CBF).
+.SH OPTIONS
+All options are set in /etc/streamwriter.conf
