@@ -1,0 +1,10 @@
+rpm/BUILD
+rpm/RPMS
+rpm/SOURCES/*gz
+rpm/SOURCES/streamwriter-2018.3/streamwriter
+rpm/SOURCES/streamwriter-2018.3/streamwriter-start
+rpm/SOURCES/streamwriter-2018.3/streamwriter-stop
+.idea
+build
+*.cbf
+
