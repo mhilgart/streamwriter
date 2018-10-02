@@ -114,6 +114,8 @@ Then follow steps in the [Quick Test](#quick-test) section.
 
 ## If compilation fails
 
-If a dependency fails to compile, you can either modify the build command in CMakeLists.txt, or go to the directory in modules/ and compile it manually.  Then you can comment out that dependency's section in CMakeLists.txt and recompile StreamWriter with
+If a dependency fails to compile, you can try modifying the build commands for that dependency in CMakeLists.txt.  Then try compiling again:
 
 ``cd [streamwriter dir] && make clean && make init && make``
+
+Another option is to go to the dependency's directory in modules/ and try compiling it manually.  Once it succeeds, you can remove that dependency's section in CMakeLists.txt so compiling StreamWriter won't try to recompile the dependency.  Finally, run the commands above to compile StreamWriter.
