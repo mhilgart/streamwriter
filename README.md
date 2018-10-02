@@ -97,7 +97,7 @@ To install these on CentOS 7, first add the EPEL repository if needed following 
 ## Compile
 
 1. **Clone the repository**
-   - ``git clone --recursive -b v2018.3-1 https://github.com/mhilgart/streamwriter``
+   - ``git clone --recursive -b v2018.3-1 https://github.com/mhilgart/streamwriter.git``
    - This checks out all git dependencies (sub-modules) and may take a few minutes
 2. **Disable system library usage in CMakeLists.txt**
    - Change line 3 to ``set(USE_SYSTEM_LIBRARIES FALSE)``
