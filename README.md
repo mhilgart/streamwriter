@@ -40,9 +40,11 @@ After starting the service either from RPM or source:
 
 # HTTP API
 
-Filename information can be set and a counter can be read via HTTP.  If you don't set any configuration, StreamWriter will write files to its current working directory with the prefix streamwriter_test.  A new configuration can be set before each series with an HTTP POST:
+Filename information can be set and a counter can be read via HTTP.  If you don't set any configuration, StreamWriter will write files to its current working directory with the prefix streamwriter_test.  A new configuration can be set before each series with an HTTP POST.  When the HTTP returns 200, it's OK to proceed with the series.
 
 ```
+To configure path information:
+
 curl -X POST \
   -d dir=/path/to/images \
   -d prefix=test \
@@ -54,9 +56,9 @@ curl -X POST \
 
 To read the counter and path information: ``curl http://[host:ip]/counter``
 
-The output will look something like this:
-
 ```
+Sample counter output:
+
 {
    "counter" : {
       "completeCounter" : 0,
@@ -90,29 +92,25 @@ These instructions are tested only on CentOS 7.5 but will hopefully work on any 
 - libsodium-devel
 - cmake3
 
-To install these on CentOS 7, first add the EPEL repository if needed following step 1 in the RPM section above.  Then use "rpm -q" to check if each package is installed.  If it isn't, use "yum install [package]" to install it.
+To install these on CentOS 7, first add the EPEL repository if needed following step 1 in the [RPM Install](#rpm-install) section.  Then use "rpm -q" to check if each package is installed.  If it isn't, use "yum install [package]" to install it.
 
 ## Compile
 
-The StreamWriter repository contains git submodules of its dependencies that are not available in CentOS 7.5.  The following command checks out StreamWriter and all of the submodules:
+1. **Clone the repository**
+   - ``git clone --recursive -b v2018.3-1 https://github.com/mhilgart/streamwriter``
+   - This checks out all git dependencies (sub-modules) and may take a few minutes
+2. **Disable system library usage in CMakeLists.txt**
+   - Change line 3 to ``set(USE_SYSTEM_LIBRARIES FALSE)``
+   - This is needed for building RPMs but requires extra system libraries
+3. **Make**
+   - ``cd streamwriter && make init && make``
+4. **Set IP addresses and ports**
+   - ``sudo cp rpm/SOURCES/streamwriter-2018.3/streamwriter.conf /etc && sudo vi /etc/streamwriter.conf``
+5. **Run**
+   - ``sudo build/streamwriter``
+   - Running as root is needed to set file permissions on the images.  StreamWriter should run fine as a regular user as long as the username isn't set from the HTTP API.
 
-``git clone --recursive -b v2018.3-1 https://github.com/mhilgart/streamwriter``
-
-Edit ``CMakeLists.txt`` and change line 3 to ``set(USE_SYSTEM_LIBRARIES FALSE)``.  This is needed for building the RPM, but requires extra system libraries.  Now compile:
-
-``cd streamwriter && make init && make``
-
-The git clone step will take at least a few minutes and consists of many separate downloads.  This will take some time especially for Boost.  The compile step will compile each dependency and can take several minutes.
-
-Copy the configuration and edit it:
-
-``cp rpm/SOURCES/streamwriter-2018.3/streamwriter.conf /etc && vi /etc/streamwriter.conf``
-
-Now you can run the program:
-
-``build/streamwriter``
-
-And take images following the instructions in the "Quick Test" section.
+Then follow steps in the [Quick Test](#quick-test) section.
 
 ## If compilation fails
 
